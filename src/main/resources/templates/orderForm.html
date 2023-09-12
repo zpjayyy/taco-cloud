@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <form method="post" th:action="@{/orders}" th:object="${tacoOrder}">
+        <h1>order your taco creations!</h1>
+
+        <img th:src="@{/images/castle-solid-24.png}">
+
+        <h3>your tacos in this order:</h3>
+        <a th:href="@{/design}" id="another">design another taco</a><br/>
+        <ul>
+            <li th:each="taco: ${tacoOrder.tacos}">
+                <span th:text="${taco.name}">taco name</span>
+            </li>
+        </ul>
+
+        <h3>deliver my taco masterpieces to...</h3>
+        <label for="deliveryName">Name:</label>
+        <input type="text" th:field="*{deliveryName}"/>
+        <br/>
+
+        <label for="deliveryStreet">Street:</label>
+        <input type="text" th:field="*{deliveryStreet}"/>
+        <br/>
+
+        <label for="deliveryCity">City:</label>
+        <input type="text" th:field="*{deliveryCity}"/>
+        <br/>
+
+        <label for="deliveryState">State:</label>
+        <input type="text" th:field="*{deliveryState}"/>
+        <br/>
+
+        <label for="deliveryZip">zip:</label>
+        <input type="text" th:field="*{deliveryZip}"/>
+        <br/>
+
+        <h3>here's how i'll pay...</h3>
+        <label for="ccNumber">Credit card #: </label>
+        <input type="text" th:field="*{ccNumber}"/>
+        <br/>
+
+        <label for="ccExpiration">Credit Expiration: </label>
+        <input type="text" th:field="*{ccExpiration}"/>
+        <br/>
+
+        <label for="ccCVV">Credit cvv #: </label>
+        <input type="text" th:field="*{ccCVV}"/>
+        <br/>
+
+        <input type="submit" value="submit order"/>
+    </form>
+</body>
+</html>
