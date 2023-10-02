@@ -4,6 +4,7 @@ import com.jay.tacocloud.entity.Ingredient;
 import com.jay.tacocloud.entity.Taco;
 import com.jay.tacocloud.entity.TacoOrder;
 import com.jay.tacocloud.enums.Type;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,7 +61,7 @@ public class DesignController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(@Valid Taco taco, @ModelAttribute TacoOrder tacoOrder) {
         tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
